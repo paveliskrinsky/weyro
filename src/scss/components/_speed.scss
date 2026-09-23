@@ -1,0 +1,463 @@
+@use "global" as *;
+
+.speed {
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  &__heading {
+    @media (min-width: $md) {
+      font-size: 60px;
+      line-height: 60px;
+    }
+  }
+
+  &__subtitle {
+    max-width: 796px;
+    @media (min-width: $md) {
+      max-width: 626px;
+    }
+    @media (min-width: $lg) {
+      max-width: 796px;
+    }
+
+    &_desktop {
+      display: none;
+      @media (min-width: $lg) {
+        display: block;
+      }
+    }
+
+    &_mobile {
+      @media (min-width: $lg) {
+        display: none;
+      }
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 60px;
+    border-radius: 32px;
+    background: $bg-light;
+    @media (min-width: $md) {
+      gap: 0;
+    }
+  }
+
+  // Баннер «Business travel» и карточка «Реальные люди»: фото с тёмным градиентом слева
+  &__banner,
+  &__support {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+  }
+
+  &__banner-bg,
+  &__support-bg {
+    position: absolute;
+    inset: 0;
+    img {
+      @include picture-img;
+    }
+  }
+
+  &__banner {
+    height: 247px;
+    padding-left: 16px;
+    border-radius: 24px;
+    @media (min-width: $md) {
+      height: 433px;
+      padding-left: 32px;
+      border-radius: 32px;
+    }
+    @media (min-width: $lg) {
+      height: 528px;
+      padding-left: 50px;
+    }
+    &::before {
+      background: linear-gradient(270deg, rgba($black, 0) 50%, rgba($black, 0.47) 65%, $black 100%);
+    }
+
+    // Кадр смещён вправо, чтобы путешественница с чемоданом оставалась в кадре
+    &-bg img {
+      object-position: 85% 50%;
+    }
+
+    &-text {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 0;
+      font-size: 14px;
+      line-height: 16px;
+      text-transform: uppercase;
+      @media (min-width: $md) {
+        gap: 32px;
+        font-size: 16px;
+        line-height: 24px;
+      }
+      @media (min-width: $lg) {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 32px;
+      }
+      &::after {
+        content: "";
+        width: 40px;
+        height: 1px;
+        background: #fff;
+      }
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 16px;
+    @media (min-width: $md) {
+      gap: 60px;
+      padding: 32px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  &__label {
+    margin: 0;
+    font-family: "BlackerPro Text", serif;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #8673f2;
+  }
+
+  &__title {
+    @media (min-width: $md) {
+      font-size: 60px;
+      line-height: 60px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 20px;
+    line-height: 24px;
+    color: #9595a2;
+  }
+
+  &__cols {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    @media (min-width: $md) {
+      flex-direction: row;
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    @media (min-width: $md) {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    & + & {
+      @media (min-width: $md) {
+        padding-left: 50px;
+        border-left: 1px solid #d2d2c8;
+      }
+    }
+
+    &-head {
+      display: flex;
+      gap: 8px;
+    }
+
+    &-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: #e5e2ea;
+      color: $violet-light;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-title {
+      margin: 0;
+      font-family: "BlackerPro Text", serif;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: -0.56px;
+    }
+
+    &-subtitle {
+      margin: 0;
+      font-size: 16px;
+      line-height: 24px;
+      color: #9595a2;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #000;
+
+    &-check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #9f9fc9;
+      border-radius: 4px;
+      background: #fff;
+      color: #cacaca;
+      // Галочка рисуется на весь квадрат 20×20, поверх рамки
+      svg {
+        width: 20px;
+        height: 20px;
+        margin: -1px;
+      }
+    }
+  }
+
+  &__support {
+    height: 247px;
+    padding: 16px;
+    border-radius: 16px;
+    @media (min-width: $md) {
+      height: 433px;
+      padding: 0 32px 0 50px;
+      border-radius: 32px;
+    }
+    // С 960px баннер растягивается на всю ширину карточки, выходя за внутренние отступы
+    @media (min-width: $lg) {
+      height: 528px;
+      margin: 0 -32px;
+    }
+    &::before {
+      background: linear-gradient(270deg, rgba($black, 0) 68%, rgba($black, 0.47) 76%, $black 84%);
+    }
+
+    &-bg img {
+      object-position: 50% 25%;
+    }
+
+    &-info {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      max-width: 152px;
+    }
+
+    &-title {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin: 0;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 32px;
+      &::after {
+        content: "";
+        width: 40px;
+        height: 1px;
+        background: #fff;
+      }
+    }
+
+    &-note {
+      margin: 0;
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+  }
+
+  // Сообщение тревел-менеджера поверх фото; на мобильных оно уменьшено целиком, как в макете
+  &__message {
+    position: absolute;
+    top: 158px;
+    right: 44px;
+    z-index: 2;
+    display: flex;
+    gap: 11px;
+    width: 303px;
+    padding: 24px 16px;
+    border-radius: 16px;
+    background: rgba(#fff, 0.7);
+    color: $black;
+    transform: scale(0.4587);
+    transform-origin: 100% 0;
+    @media (min-width: $md) {
+      top: 275px;
+      right: 53px;
+      transform: none;
+    }
+    @media (min-width: $lg) {
+      top: 396px;
+      right: 117px;
+    }
+    @media (min-width: $xl) {
+      top: 192px;
+      right: 80px;
+    }
+
+    &-point {
+      position: relative;
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      &::before {
+        content: "";
+        @include abs50;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #806ef0;
+      }
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    &-title {
+      max-width: 208px;
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 16px;
+      letter-spacing: -0.48px;
+    }
+
+    &-text {
+      margin: 0;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: -0.36px;
+    }
+  }
+
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: $md) {
+      flex-direction: row;
+      gap: 17px;
+    }
+    @media (min-width: $lg) {
+      gap: 49px;
+    }
+  }
+
+  // Разделители между показателями: горизонтальные на мобильных, вертикальные в ряд
+  &__stat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 16px;
+    text-align: center;
+    @media (min-width: $md) {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    & + &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #d2d2c8;
+      @media (min-width: $md) {
+        bottom: 0;
+        left: -9px;
+        right: auto;
+        width: 1px;
+        height: auto;
+      }
+      @media (min-width: $lg) {
+        left: -25px;
+      }
+    }
+
+    &-value {
+      margin: 0;
+      font-family: "BlackerPro Text", serif;
+      font-size: 32px;
+      line-height: 38px;
+      letter-spacing: -1.08px;
+    }
+
+    &-text {
+      margin: 0;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}

@@ -1,0 +1,276 @@
+@use "global" as *;
+
+.more-then {
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  &__card {
+    position: relative;
+    padding: 24px 16px;
+    border-radius: 32px;
+    background: $bg-light;
+    overflow: hidden;
+    @media (min-width: $md) {
+      padding: 48px 32px;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    img {
+      @include picture-img;
+      object-position: 75% 50%;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__head {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    height: 48px;
+    @media (min-width: $md) {
+      height: 16px;
+    }
+  }
+
+  &__label {
+    margin: 0;
+    font-family: "BlackerPro Text", serif;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #7b7b81;
+  }
+
+  &__note {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+    width: 121px;
+    margin: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    @media (min-width: $md) {
+      gap: 32px;
+    }
+    @media (min-width: $xxl) {
+      display: none;
+    }
+    &::after {
+      content: "";
+      width: 40px;
+      height: 1px;
+      background: $black;
+    }
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    margin-top: 16px;
+    @media (min-width: $md) {
+      font-size: 60px;
+      line-height: 60px;
+    }
+    @media (min-width: $xxl) {
+      margin-top: 32px;
+    }
+    span {
+      color: $violet-light;
+    }
+  }
+
+  &__subtitle {
+    position: relative;
+    z-index: 1;
+    margin: 16px 0 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: #9595a2;
+    @media (min-width: $md) {
+      max-width: 502px;
+      margin-top: 24px;
+      font-size: 20px;
+    }
+    @media (min-width: $xxl) {
+      max-width: 570px;
+    }
+  }
+
+  &__features {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+    @media (min-width: $md) {
+      grid-template-columns: 245px 225px;
+      grid-template-rows: repeat(3, auto);
+      grid-auto-flow: column;
+      gap: 8px 0;
+      margin-top: 32px;
+    }
+    @media (min-width: $xl) {
+      grid-template-columns: repeat(3, 225px);
+      grid-template-rows: none;
+      grid-auto-flow: row;
+      gap: 32px 8px;
+    }
+    @media (min-width: $xxl) {
+      grid-template-columns: repeat(3, 253px);
+    }
+  }
+
+  &__feature {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    @media (min-width: $md) {
+      padding-left: 16px;
+      border-left: 1px solid #9595a2;
+    }
+
+    &-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: #e5e2ea;
+      color: $violet;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-title {
+      margin: 0;
+      font-family: "BlackerPro Text", serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -0.56px;
+    }
+
+    &-text {
+      margin: 0;
+      font-size: 14px;
+      line-height: 16px;
+      color: #717082;
+    }
+  }
+
+  &__media {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    @media (min-width: $md) {
+      position: relative;
+      width: 540px;
+      margin-top: 32px;
+    }
+    @media (min-width: $lg) {
+      position: absolute;
+      top: 228px;
+      right: -17px;
+      width: 400px;
+      margin: 0;
+    }
+    @media (min-width: $xl) {
+      top: 77px;
+      right: -24px;
+      width: 440px;
+    }
+    @media (min-width: $xxl) {
+      top: 73px;
+      right: 0;
+      width: 516px;
+    }
+  }
+
+  &__orders {
+    aspect-ratio: 326 / 219;
+    @media (min-width: $md) {
+      aspect-ratio: 540 / 363;
+    }
+    @media (min-width: $xxl) {
+      aspect-ratio: 516 / 306;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  // Карточка «Экономия для компании»: размеры и отступы задаются по самой карточке,
+  // картинка с тенью выходит за её пределы
+  &__economy {
+    position: relative;
+    width: 212px;
+    margin-top: -23px;
+    aspect-ratio: 280 / 102;
+    @media (min-width: $md) {
+      position: absolute;
+      top: 0;
+      left: 434px;
+      margin: 0;
+    }
+    @media (min-width: $lg) {
+      top: 238px;
+      left: 103px;
+      width: 280px;
+    }
+    @media (min-width: $xl) {
+      top: 266px;
+      left: 131px;
+    }
+    @media (min-width: $xxl) {
+      top: 286px;
+      left: 222px;
+    }
+    img {
+      position: absolute;
+      top: -14.22%;
+      left: -6.43%;
+      width: 112.86%;
+      height: 135.29%;
+      max-width: none;
+    }
+  }
+
+  &__button {
+    position: relative;
+    z-index: 1;
+    align-self: center;
+    margin-top: 16px;
+    padding-right: 10px;
+    @media (min-width: $md) {
+      align-self: flex-start;
+      margin-top: 32px;
+    }
+  }
+}

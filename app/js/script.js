@@ -63,7 +63,7 @@ function notify() {
     let closed = false;
     try {
         closed = Date.now() < Number(localStorage.getItem(key));
-    } catch (err) {}
+    } catch (err) { }
 
     if (!closed) {
         document.querySelectorAll('.js-notify').forEach(el => el.classList.add('active'));
@@ -77,14 +77,14 @@ function notify() {
         if (container) container.classList.remove('active');
         try {
             localStorage.setItem(key, Date.now() + week);
-        } catch (err) {}
+        } catch (err) { }
         e.preventDefault();
     });
 }
 
 function platform() {
     document.querySelectorAll('.platform').forEach(container => {
-        
+
     });
 }
 
@@ -128,6 +128,42 @@ function times() {
     });
 }
 
+function optimize() {
+    const desktop = window.matchMedia('(min-width: 798px)');
+
+    document.querySelectorAll('.js-optimize').forEach(container => {
+        const el = container.querySelector('.swiper');
+        const slide = container.querySelector('.optimize__slide');
+        // Отступ после слайдов, чтобы каждый слайд, включая последний, мог встать активным к левому краю
+        const offsetAfter = () => desktop.matches ? el.clientWidth - slide.offsetWidth : 0;
+
+        const swiper = new Swiper(el, {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            speed: 500,
+            slidesOffsetAfter: offsetAfter(),
+            pagination: {
+                el: container.querySelector('.optimize__pagination'),
+                clickable: true,
+            },
+            navigation: {
+                prevEl: container.querySelector('.optimize__nav-button_prev'),
+                nextEl: container.querySelector('.optimize__nav-button_next'),
+            },
+            on: {
+                beforeResize(s) {
+                    s.params.slidesOffsetAfter = offsetAfter();
+                },
+            },
+        });
+
+        swiper.on('click', (s) => {
+            if (!desktop.matches || s.clickedIndex === undefined) return;
+            s.slideTo(s.clickedIndex);
+        });
+    });
+}
+
 function inits() {
     tabs();
     tel();
@@ -135,6 +171,7 @@ function inits() {
     notify();
     platform();
     times();
+    optimize();
 }
 
 window.addEventListener("DOMContentLoaded", inits);
