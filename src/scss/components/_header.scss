@@ -1,1 +1,276 @@
 @use "global" as *;
+
+.header-space {
+  height: 66px;
+  @media (min-width: $md) {
+    height: 80px;
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: $xxxxl;
+  z-index: 100;
+  background: $bg-light;
+  padding: 0 16px;
+  @media (min-width: $md) {
+    padding: 0;
+  }
+
+  &__body {
+    background: $bg-light;
+    border-radius: 999px;
+    position: relative;
+    z-index: 20;
+
+    &-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 66px;
+      @media (min-width: $md) {
+        height: 80px;
+      }
+      @media (min-width: $lg) {
+        gap: 10px;
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    color: $black;
+    width: 100px;
+    flex-shrink: 0;
+    @media (min-width: $md) {
+      width: 126px;
+    }
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__nav {
+    display: none;
+    align-items: center;
+    gap: 14px;
+    @media (min-width: $lg) {
+      display: flex;
+    }
+    @media (min-width: $xl) {
+      gap: 50px;
+    }
+    @media (min-width: $xxxl) {
+      gap: 70px;
+    }
+    a {
+      font-size: 14px;
+      line-height: 18px;
+      color: $black;
+      white-space: nowrap;
+      &:hover {
+        color: $violet;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    @media (min-width: $lg) {
+      gap: 10px;
+    }
+  }
+
+  &__buttons {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    @media (min-width: $lg) {
+      display: flex;
+    }
+    .button {
+      padding-left: 16px;
+      padding-right: 16px;
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    .button_gradient {
+      padding-right: 10px;
+    }
+  }
+
+  &__login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: $black;
+    &:hover {
+      color: $violet;
+    }
+  }
+
+  &__burger {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    @media (min-width: $lg) {
+      display: none;
+    }
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 18px;
+      height: 2px;
+      background: #14140f;
+      border-radius: 999px;
+      transition: transform $transition;
+    }
+    &:before {
+      transform: translate(-50%, calc(-50% - 3px));
+    }
+    &:after {
+      transform: translate(-50%, calc(-50% + 3px));
+    }
+  }
+}
+
+.burger-opened {
+  overflow: hidden;
+  .header {
+    background: none;
+    &__burger {
+      &:before,
+      &:after {
+        background: $black;
+      }
+      &:before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      &:after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+.header-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  visibility: hidden;
+  transition: visibility $transition;
+  @media (min-width: $lg) {
+    display: none;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(61, 61, 58, 0.75);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity $transition;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 78px;
+    left: 16px;
+    right: 16px;
+    @media (min-width: $md) {
+      top: 92px;
+      left: 32px;
+      right: 32px;
+    }
+    background: #fff;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 16px 32px 0 rgba(16, 15, 26, 0.12);
+    opacity: 0;
+    transform: translateY(-12px);
+    transition:
+      opacity $transition,
+      transform $transition;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3px 0;
+      border-bottom: 1px solid #cbccc1;
+      font-size: 16px;
+      line-height: 1.4;
+      color: $black;
+      svg {
+        width: 24px;
+        height: 24px;
+        color: $black;
+      }
+      &:hover {
+        color: $violet;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 32px;
+    .button {
+      width: 100%;
+      justify-content: space-between;
+      padding-right: 10px;
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+.burger-opened .header-mobile {
+  visibility: visible;
+  &__overlay {
+    opacity: 1;
+  }
+  &__menu {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -40,10 +40,31 @@ function tel() {
     });
 }
 
+function header() {
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+
+        if (target.closest('.js-burger-open')) {
+            document.body.classList.toggle('burger-opened');
+            e.preventDefault();
+        }
+
+        if (target.closest('.js-burger-close')) {
+            document.body.classList.remove('burger-opened');
+            e.preventDefault();
+        }
+
+        if (target.closest('.js-notify-close')) {
+            document.body.classList.add('notify-closed');
+            e.preventDefault();
+        }
+    });
+}
 
 function inits() {
     tabs();
     tel();
+    header();
 }
 
 window.addEventListener("DOMContentLoaded", inits);
