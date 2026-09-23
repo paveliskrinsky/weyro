@@ -1,12 +1,19 @@
 @use "global" as *;
 
 .notify {
-  display: none;
   background: $violet;
   color: #fff;
   padding: 12px 0;
   position: relative;
   z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  &.active {
+    display: block;
+  }
 
   &__inner {
     display: grid;

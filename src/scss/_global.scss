@@ -246,3 +246,31 @@ body {
     padding-right: 50px;
   }
 }
+
+.title {
+  margin: 0;
+  font-family: "BlackerPro Text", serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 40px;
+  letter-spacing: -1.8px;
+  color: $black;
+  @media (min-width: $md) {
+    font-size: 50px;
+    line-height: 50px;
+  }
+  @media (min-width: $lg) {
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: #717082;
+  @media (min-width: $md) {
+    font-size: 18px;
+  }
+}

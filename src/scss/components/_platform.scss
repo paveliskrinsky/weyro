@@ -1,0 +1,249 @@
+@use "global" as *;
+
+.platform {
+  padding-top: 32px;
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 854px;
+    margin: 0 auto;
+    text-align: center;
+    @media (min-width: $md) {
+      gap: 24px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  &__tabs {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+    padding: 24px;
+    background: $bg-light;
+    border-radius: 28px;
+    overflow: hidden;
+    @media (min-width: $xl) {
+      min-height: 350px;
+    }
+  }
+
+  &__tablist-wrap {
+    margin: 0 -24px;
+    padding: 0 24px;
+    overflow-x: auto;
+    @media (min-width: $xl) {
+      max-width: 501px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__tablist {
+    display: inline-flex;
+    padding: 8px;
+    background: #fff;
+    border-radius: 32px;
+    @media (min-width: $xl) {
+      gap: 8px;
+    }
+  }
+
+  &__tab {
+    flex-shrink: 0;
+    min-width: 93px;
+    height: 28px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 32px;
+    background: transparent;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 500;
+    color: $black;
+    white-space: nowrap;
+    @media (min-width: $xl) {
+      min-width: 0;
+      height: 34px;
+      padding: 0 16px;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 400;
+    }
+    &:hover {
+      color: $violet;
+    }
+    &.active {
+      background: $violet;
+      color: #fff;
+    }
+  }
+
+  &__panel {
+    grid-area: 2 / 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $transition, visibility $transition;
+    @media (min-width: $xl) {
+      justify-content: flex-end;
+    }
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__image {
+    position: relative;
+    aspect-ratio: 1095 / 489;
+    border-radius: 12px;
+    overflow: hidden;
+    @media (min-width: $md) {
+      border-radius: 32px;
+    }
+    @media (min-width: $xl) {
+      position: absolute;
+      top: 24px;
+      right: 0;
+      bottom: 0;
+      left: 570px;
+      aspect-ratio: auto;
+      border-radius: 28px 0 0;
+    }
+    img {
+      @include picture-img;
+      object-position: left top;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 20px;
+    color: #717082;
+    @media (min-width: $xl) {
+      max-width: 501px;
+    }
+  }
+
+  &__case {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    background: $bg-light;
+    border-radius: 32px;
+    color: #717082;
+    @media (min-width: $xxl) {
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    &-logo {
+      position: relative;
+      flex-shrink: 0;
+      width: 78px;
+      height: 31px;
+      @media (min-width: $xxl) {
+        width: 130px;
+        height: 52px;
+      }
+      img {
+        @include picture-img;
+        object-fit: contain;
+      }
+    }
+
+    &-stats {
+      display: flex;
+      gap: 20px;
+      border-top: 1px solid #d2d2c8;
+      @media (min-width: $xxl) {
+        flex-shrink: 0;
+        gap: 24px;
+        border-top: 0;
+      }
+    }
+
+    &-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 140px;
+      padding-top: 12px;
+      @media (min-width: $xxl) {
+        width: auto;
+        padding: 12px 16px;
+        border-left: 1px solid #d2d2c8;
+      }
+    }
+
+    &-value {
+      margin: 0;
+      font-family: "BlackerPro Text", serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 24px;
+      letter-spacing: -1.08px;
+      white-space: nowrap;
+      @media (min-width: $xxl) {
+        font-size: 32px;
+        line-height: 38px;
+      }
+    }
+
+    &-label {
+      margin: 0;
+      font-size: 12px;
+      line-height: 16px;
+      @media (min-width: $xxl) {
+        white-space: nowrap;
+      }
+    }
+
+    &-text {
+      margin: 0;
+      font-size: 14px;
+      line-height: 18px;
+      @media (min-width: $xxl) {
+        flex: 1;
+        max-width: 568px;
+        margin-right: auto;
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+
+    &-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      align-self: flex-start;
+      font-size: 14px;
+      line-height: 18px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      @media (min-width: $xxl) {
+        align-self: center;
+        flex-shrink: 0;
+      }
+      &:hover {
+        color: $violet;
+      }
+    }
+  }
+}

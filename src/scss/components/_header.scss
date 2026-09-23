@@ -159,7 +159,9 @@
 }
 
 .burger-opened {
-  overflow: hidden;
+  @media (max-width: 959px) {
+    overflow: hidden;
+  }
   .header {
     background: none;
     &__burger {
