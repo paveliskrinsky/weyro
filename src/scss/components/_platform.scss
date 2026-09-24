@@ -29,7 +29,7 @@
     grid-template-rows: auto 1fr;
     gap: 20px;
     padding: 24px;
-    background: $bg-light;
+    background: var(--bg-light);
     border-radius: 28px;
     overflow: hidden;
     @media (min-width: $xl) {
@@ -51,7 +51,7 @@
   &__tablist {
     display: inline-flex;
     padding: 8px;
-    background: #fff;
+    background: var(--white);
     border-radius: 32px;
     @media (min-width: $xl) {
       gap: 8px;
@@ -69,7 +69,7 @@
     font-size: 10px;
     line-height: 12px;
     font-weight: 500;
-    color: $black;
+    color: var(--black);
     white-space: nowrap;
     @media (min-width: $xl) {
       min-width: 0;
@@ -80,11 +80,11 @@
       font-weight: 400;
     }
     &:hover {
-      color: $violet;
+      color: var(--violet);
     }
     &.active {
-      background: $violet;
-      color: #fff;
+      background: var(--violet);
+      color: var(--white);
     }
   }
 
@@ -95,7 +95,7 @@
     gap: 20px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity $transition, visibility $transition;
+    transition: opacity var(--transition), visibility var(--transition);
     @media (min-width: $xl) {
       justify-content: flex-end;
     }
@@ -132,7 +132,7 @@
     margin: 0;
     font-size: 16px;
     line-height: 20px;
-    color: #717082;
+    color: var(--text-muted);
     @media (min-width: $xl) {
       max-width: 501px;
     }
@@ -143,9 +143,9 @@
     flex-direction: column;
     gap: 8px;
     padding: 16px;
-    background: $bg-light;
+    background: var(--bg-light);
     border-radius: 32px;
-    color: #717082;
+    color: var(--text-muted);
     @media (min-width: $xxl) {
       flex-direction: row;
       align-items: center;
@@ -171,7 +171,7 @@
     &-stats {
       display: flex;
       gap: 20px;
-      border-top: 1px solid #d2d2c8;
+      border-top: 1px solid var(--divider);
       @media (min-width: $xxl) {
         flex-shrink: 0;
         gap: 24px;
@@ -188,7 +188,7 @@
       @media (min-width: $xxl) {
         width: auto;
         padding: 12px 16px;
-        border-left: 1px solid #d2d2c8;
+        border-left: 1px solid var(--divider);
       }
     }
 
@@ -242,7 +242,7 @@
         flex-shrink: 0;
       }
       &:hover {
-        color: $violet;
+        color: var(--violet);
       }
     }
   }

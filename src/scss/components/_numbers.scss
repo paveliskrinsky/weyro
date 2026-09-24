@@ -33,7 +33,7 @@
     flex-direction: column;
     gap: 24px;
     padding: 24px 16px;
-    background: $bg-light;
+    background: var(--bg-light);
     border-radius: 32px;
     @media (min-width: $md) {
       align-items: center;
@@ -75,7 +75,7 @@
       margin: 0;
       font-size: 16px;
       line-height: 24px;
-      color: #717082;
+      color: var(--text-muted);
     }
   }
 }

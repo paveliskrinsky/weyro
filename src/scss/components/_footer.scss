@@ -1,7 +1,7 @@
 @use "global" as *;
 
 .footer {
-  background: #fff;
+  background: var(--white);
   padding: 0 16px;
   margin-top: 40px;
   @media (min-width: $md) {
@@ -9,7 +9,7 @@
   }
 
   &__top {
-    background: $violet;
+    background: var(--violet);
     padding-top: 20px;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@
     a {
       font-size: 16px;
       line-height: 24px;
-      color: #fff;
+      color: var(--white);
       &:hover {
         opacity: 1;
         text-decoration: underline;
@@ -49,7 +49,7 @@
       font-size: 20px;
       line-height: 24px;
       font-weight: 700;
-      color: #fff;
+      color: var(--white);
     }
   }
 
@@ -66,7 +66,7 @@
         padding-right: 20px;
         font-family: "BlackerPro Text", serif;
         font-weight: 400;
-        color: #fff;
+        color: var(--white);
         font-size: 33px;
         line-height: 80px;
         letter-spacing: -0.08em;
@@ -100,7 +100,7 @@
 
   &__logo {
     display: flex;
-    color: $black;
+    color: var(--black);
     width: 126px;
   }
 
@@ -117,22 +117,22 @@
       gap: 4px;
       font-size: 16px;
       line-height: 24px;
-      color: $black;
+      color: var(--black);
       p {
         margin: 0;
       }
       a {
-        color: $gray;
+        color: var(--gray);
         font-weight: 300;
         letter-spacing: -0.02em;
         text-decoration: underline;
-        text-decoration-color: #cfced5;
+        text-decoration-color: var(--line);
         &:hover {
-          text-decoration-color: $gray;
+          text-decoration-color: var(--gray);
         }
       }
       span {
-        color: $gray;
+        color: var(--gray);
       }
     }
 
@@ -140,7 +140,7 @@
       margin: 0;
       font-size: 16px;
       line-height: 24px;
-      color: $black;
+      color: var(--black);
     }
   }
 }

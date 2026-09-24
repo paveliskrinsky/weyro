@@ -1,7 +1,3 @@
-$rotate180: rotate(180deg);
-
-$transition: 0.3s;
-
 $md: 798px;
 $lg: 960px;
 $xl: 1200px;
@@ -9,13 +5,47 @@ $xxl: 1440px;
 $xxxl: 1600px;
 $xxxxl: 1920px;
 
-$black: #181818;
-$violet: #7161ef;
-$violet-light: #8a76f2;
-$violet-gradient: linear-gradient(90deg, $violet 0%, $violet-light 100%);
-$gray: #3e3e55;
-$gray-light: #808080;
-$bg-light: #f6f5fc;
+:root {
+  --transition: 0.3s;
+  --rotate-180: rotate(180deg);
+
+  --white: #fff;
+  --white-rgb: 255, 255, 255;
+  --black: #181818;
+  --black-rgb: 24, 24, 24;
+  --black-pure: #000;
+  --shadow-rgb: 16, 24, 40;
+
+  --violet: #7161ef;
+  --violet-rgb: 113, 97, 239;
+  --violet-light: #8a76f2;
+  --violet-dark: #5332ce;
+  --violet-icon: #6455cf;
+  --violet-marker: #806ef0;
+  --violet-muted: #9f9fc9;
+  --violet-gradient: linear-gradient(90deg, var(--violet) 0%, var(--violet-light) 100%);
+
+  --lilac: #f0ebfe;
+  --lilac-rgb: 240, 235, 254;
+  --bg-light: #f6f5fc;
+
+  --gray: #3e3e55;
+  --gray-light: #808080;
+  --gray-medium: #7b7b81;
+  --gray-blue: #a1a2bf;
+  --gray-violet: #8880a5;
+  --gray-silver: #cacaca;
+  --gray-lightest: #ddd;
+
+  --text-muted: #717082;
+  --text-light: #9595a2;
+  --text-placeholder: #757575;
+
+  --border: #e2e2e6;
+  --line: #cfced5;
+  --divider: #d2d2c8;
+  --divider-light: #e5e2ea;
+}
 
 @mixin line() {
   white-space: nowrap;
@@ -56,8 +86,8 @@ $bg-light: #f6f5fc;
 }
 
 ::selection {
-  color: #fff;
-  background: #5332ce;
+  color: var(--white);
+  background: var(--violet-dark);
 }
 
 ::-webkit-scrollbar {
@@ -66,18 +96,18 @@ $bg-light: #f6f5fc;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #ddd;
+  background-color: var(--gray-lightest);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #5332ce;
+  background-color: var(--violet-dark);
   border-radius: 999px;
 }
 
 @-moz-document url-prefix() {
   * {
     scrollbar-width: thin;
-    scrollbar-color: #5332ce #ddd;
+    scrollbar-color: var(--violet-dark) var(--gray-lightest);
   }
 }
 
@@ -138,7 +168,7 @@ a,
 input[type="button"],
 input[type="submit"],
 button {
-  transition: $transition;
+  transition: var(--transition);
   cursor: pointer;
 }
 
@@ -165,12 +195,15 @@ svg {
 }
 
 .rotate180 {
-  transform: $rotate180;
+  transform: var(--rotate-180);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 68px;
+  scroll-padding-top: 66px;
+  @media (min-width: $md) {
+    scroll-padding-top: 80px;
+  }
 }
 
 body {
@@ -182,7 +215,7 @@ body {
   font-variant-numeric: lining-nums;
   min-width: 390px;
   font-family: "Geist", sans-serif;
-  color: $black;
+  color: var(--black);
 }
 
 .app {
@@ -194,40 +227,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  border: 1px solid $black;
-  background: #fff;
-  color: $black;
-  border-radius: 999px;
-  padding: 0 16px;
-  height: 44px;
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 400;
-  white-space: nowrap;
-  box-shadow: 0 4px 6px -2px rgba(16, 24, 40, 0.05);
-  &:hover {
-    background: $black;
-    color: #fff;
-  }
-  svg {
-    flex-shrink: 0;
-  }
-  &_gradient {
-    background: $violet-gradient;
-    border-color: transparent;
-    color: #fff;
-    &:hover {
-      background: $violet-gradient;
-      filter: brightness(1.1);
-    }
-  }
 }
 
 .container {
@@ -247,6 +246,40 @@ body {
   }
 }
 
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid var(--black);
+  background: var(--white);
+  color: var(--black);
+  border-radius: 999px;
+  padding: 0 16px;
+  height: 44px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 400;
+  white-space: nowrap;
+  box-shadow: 0 4px 6px -2px rgba(var(--shadow-rgb), 0.05);
+  &:hover {
+    background: var(--black);
+    color: var(--white);
+  }
+  svg {
+    flex-shrink: 0;
+  }
+  &_gradient {
+    background: var(--violet-gradient);
+    border-color: transparent;
+    color: var(--white);
+    &:hover {
+      background: var(--violet-gradient);
+      filter: brightness(1.1);
+    }
+  }
+}
+
 .title {
   margin: 0;
   font-family: "BlackerPro Text", serif;
@@ -254,7 +287,7 @@ body {
   font-size: 40px;
   line-height: 40px;
   letter-spacing: -1.8px;
-  color: $black;
+  color: var(--black);
   @media (min-width: $md) {
     font-size: 50px;
     line-height: 50px;
@@ -269,7 +302,7 @@ body {
   margin: 0;
   font-size: 16px;
   line-height: 24px;
-  color: #717082;
+  color: var(--text-muted);
   @media (min-width: $md) {
     font-size: 18px;
   }

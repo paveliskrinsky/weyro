@@ -59,7 +59,7 @@
       line-height: 60px;
     }
     span {
-      color: $violet-light;
+      color: var(--violet-light);
     }
   }
 
@@ -67,7 +67,7 @@
     margin: 0;
     font-size: 14px;
     line-height: 16px;
-    color: #9595a2;
+    color: var(--text-light);
     @media (min-width: $md) {
       font-size: 20px;
       line-height: 24px;
@@ -108,9 +108,9 @@
       flex-shrink: 0;
       width: 36px;
       height: 36px;
-      background: #e5e2ea;
+      background: var(--divider-light);
       border-radius: 11px;
-      color: $violet-light;
+      color: var(--violet-light);
       @media (min-width: $xxl) {
         width: 10px;
         height: 10px;
@@ -140,7 +140,7 @@
       margin: 0;
       font-size: 14px;
       line-height: 16px;
-      color: #717082;
+      color: var(--text-muted);
     }
   }
 

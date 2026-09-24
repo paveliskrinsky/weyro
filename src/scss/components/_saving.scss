@@ -69,7 +69,7 @@
       line-height: 60px;
     }
     span {
-      color: $violet-light;
+      color: var(--violet-light);
     }
   }
 
@@ -96,7 +96,7 @@
     gap: 4px;
     font-size: 14px;
     line-height: 16px;
-    color: #9595a2;
+    color: var(--text-light);
     @media (min-width: $md) {
       max-width: 509px;
     }
@@ -108,7 +108,7 @@
     }
     svg {
       flex-shrink: 0;
-      color: #806ef0;
+      color: var(--violet-marker);
     }
   }
 
@@ -140,7 +140,7 @@
     gap: 8px;
     @media (min-width: $md) {
       padding-left: 16px;
-      border-left: 1px solid #9595a2;
+      border-left: 1px solid var(--text-light);
     }
 
     &-head {
@@ -158,8 +158,8 @@
       width: 24px;
       height: 24px;
       border-radius: 7px;
-      background: #e5e2ea;
-      color: $violet;
+      background: var(--divider-light);
+      color: var(--violet);
       @media (min-width: $md) {
         width: 36px;
         height: 36px;
@@ -188,7 +188,7 @@
       margin: 0;
       font-size: 14px;
       line-height: 16px;
-      color: #717082;
+      color: var(--text-muted);
     }
   }
 

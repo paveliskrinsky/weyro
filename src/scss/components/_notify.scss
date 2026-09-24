@@ -1,8 +1,8 @@
 @use "global" as *;
 
 .notify {
-  background: $violet;
-  color: #fff;
+  background: var(--violet);
+  color: var(--white);
   padding: 12px 0;
   position: relative;
   z-index: 1000;
@@ -47,7 +47,7 @@
     justify-self: start;
     font-size: 12px;
     line-height: 16px;
-    color: #fff;
+    color: var(--white);
     text-decoration: underline;
     white-space: nowrap;
     @media (min-width: $md) {
@@ -69,7 +69,7 @@
     padding: 0;
     border: none;
     background: none;
-    color: #fff;
+    color: var(--white);
     &:hover {
       opacity: 0.7;
     }

@@ -1,7 +1,7 @@
 @use "global" as *;
 
 .trust {
-  background: #f0ebfe;
+  background: var(--lilac);
   padding-top: 10px;
   overflow: hidden;
   @media (min-width: $md) {
@@ -12,7 +12,7 @@
     margin: 0;
     font-size: 16px;
     line-height: 24px;
-    color: $black;
+    color: var(--black);
     @media (min-width: $md) {
       margin-bottom: 16px;
       font-size: 18px;
@@ -43,13 +43,13 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    color: #717082;
+    color: var(--text-muted);
     @media (min-width: $md) {
       padding: 12px 16px;
     }
     & + & {
       padding-left: 4px;
-      border-left: 1px solid #d2d2c8;
+      border-left: 1px solid var(--divider);
       @media (min-width: $md) {
         padding-left: 16px;
       }
@@ -108,11 +108,11 @@
     }
     &::before {
       left: 0;
-      background: linear-gradient(90deg, #f0ebfe 0%, rgba(#f0ebfe, 0) 100%);
+      background: linear-gradient(90deg, var(--lilac) 0%, rgba(var(--lilac-rgb), 0) 100%);
     }
     &::after {
       right: 0;
-      background: linear-gradient(270deg, #f0ebfe 0%, rgba(#f0ebfe, 0) 100%);
+      background: linear-gradient(270deg, var(--lilac) 0%, rgba(var(--lilac-rgb), 0) 100%);
     }
 
     &-track {

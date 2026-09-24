@@ -53,6 +53,11 @@ function header() {
             document.body.classList.remove('burger-opened');
             e.preventDefault();
         }
+
+        // Ссылка-якорь в мобильном меню: закрываем меню, а переход к секции оставляем браузеру
+        if (target.closest('.js-anchor')) {
+            document.body.classList.remove('burger-opened');
+        }
     });
 }
 
@@ -128,40 +133,81 @@ function times() {
     });
 }
 
-function optimize() {
+function expandSlider(container, block, gap = 20) {
     const desktop = window.matchMedia('(min-width: 798px)');
+    const desktopGap = 20;
+    const el = container.querySelector('.swiper');
+    const slides = container.querySelectorAll(`.${block}__slide`);
 
-    document.querySelectorAll('.js-optimize').forEach(container => {
-        const el = container.querySelector('.swiper');
-        const slide = container.querySelector('.optimize__slide');
-        // Отступ после слайдов, чтобы каждый слайд, включая последний, мог встать активным к левому краю
-        const offsetAfter = () => desktop.matches ? el.clientWidth - slide.offsetWidth : 0;
+    const offsetAfter = () => {
+        if (!desktop.matches) return 0;
+        const slideWidth = slides[0].offsetWidth;
+        return Math.min(el.clientWidth - slideWidth, (slides.length - 1) * (slideWidth + desktopGap));
+    };
 
-        const swiper = new Swiper(el, {
-            slidesPerView: 'auto',
-            spaceBetween: 20,
-            speed: 500,
-            slidesOffsetAfter: offsetAfter(),
-            pagination: {
-                el: container.querySelector('.optimize__pagination'),
-                clickable: true,
+    const swiper = new Swiper(el, {
+        slidesPerView: 'auto',
+        spaceBetween: gap,
+        speed: 500,
+        slidesOffsetAfter: offsetAfter(),
+        breakpoints: {
+            798: {
+                spaceBetween: desktopGap,
             },
-            navigation: {
-                prevEl: container.querySelector('.optimize__nav-button_prev'),
-                nextEl: container.querySelector('.optimize__nav-button_next'),
+        },
+        pagination: {
+            el: container.querySelector(`.${block}__pagination`),
+            clickable: true,
+        },
+        navigation: {
+            prevEl: container.querySelector(`.${block}__nav-button_prev`),
+            nextEl: container.querySelector(`.${block}__nav-button_next`),
+        },
+        on: {
+            beforeResize(s) {
+                s.params.slidesOffsetAfter = offsetAfter();
             },
-            on: {
-                beforeResize(s) {
-                    s.params.slidesOffsetAfter = offsetAfter();
-                },
-            },
-        });
+        },
+    });
 
-        swiper.on('click', (s) => {
-            if (!desktop.matches || s.clickedIndex === undefined) return;
-            s.slideTo(s.clickedIndex);
+    swiper.on('click', (s) => {
+        if (!desktop.matches || s.clickedIndex === undefined) return;
+        s.slideTo(s.clickedIndex);
+    });
+}
+
+function optimize() {
+    document.querySelectorAll('.js-optimize').forEach(container => expandSlider(container, 'optimize'));
+}
+
+function dashboard() {
+    document.querySelectorAll('.js-dashboard').forEach(container => expandSlider(container, 'dashboard', 10));
+}
+
+function video() {
+    document.querySelectorAll('.js-video').forEach(preview => {
+        preview.addEventListener('click', () => {
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${preview.dataset.videoId}?autoplay=1&rel=0`;
+            iframe.title = 'Видео WEYRO';
+            iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+            iframe.allowFullscreen = true;
+            preview.replaceWith(iframe);
         });
     });
+}
+
+function aos() {
+    if (typeof AOS === 'undefined') return;
+
+    AOS.init({
+        once: true,
+        duration: 700,
+        easing: 'ease-out-cubic',
+        offset: 40,
+    });
+
+    window.addEventListener('load', () => AOS.refresh());
 }
 
 function inits() {
@@ -172,6 +218,9 @@ function inits() {
     platform();
     times();
     optimize();
+    dashboard();
+    video();
+    aos();
 }
 
 window.addEventListener("DOMContentLoaded", inits);

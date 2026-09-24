@@ -43,12 +43,12 @@
     height: 300px;
     border-radius: 32px;
     overflow: hidden;
-    color: #fff;
+    color: var(--white);
     @media (min-width: $md) {
       width: 100px;
       height: 400px;
       cursor: pointer;
-      transition: width $transition;
+      transition: width var(--transition);
       &.active {
         width: 502px;
         cursor: default;
@@ -70,7 +70,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(0deg, rgba(24, 24, 24, 0.35) 70%, rgba(24, 24, 24, 0.02) 111%);
+        background: linear-gradient(0deg, rgba(var(--black-rgb), 0.35) 70%, rgba(var(--black-rgb), 0.02) 111%);
       }
     }
 
@@ -97,8 +97,8 @@
       max-width: 160px;
       height: 35px;
       margin: 13px 0;
-      color: #fff;
-      transition: $transition;
+      color: var(--white);
+      transition: var(--transition);
       img {
         @include picture-img;
         object-fit: contain;
@@ -166,10 +166,10 @@
       width: 8px;
       height: 8px;
       margin: 0 !important;
-      background: #d2d2c8;
+      background: var(--divider);
       border-radius: 9999px;
       opacity: 1;
-      transition: width $transition;
+      transition: width var(--transition);
     }
     .swiper-pagination-bullet-active {
       width: 40px;
@@ -188,13 +188,13 @@
     width: 40px;
     height: 40px;
     padding: 0;
-    border: 1px solid $black;
+    border: 1px solid var(--black);
     border-radius: 9999px;
     background: transparent;
-    color: $black;
+    color: var(--black);
     &:hover {
-      background: $black;
-      color: #fff;
+      background: var(--black);
+      color: var(--white);
     }
     &.swiper-button-disabled {
       opacity: 0.3;

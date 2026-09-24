@@ -9,7 +9,7 @@
   &__card {
     padding: 16px 24px;
     border-radius: 32px;
-    background: $bg-light;
+    background: var(--bg-light);
     overflow: hidden;
     @media (min-width: $xl) {
       padding: 16px 32px;
@@ -83,7 +83,7 @@
       line-height: 10px;
       text-transform: uppercase;
       white-space: nowrap;
-      color: #fff;
+      color: var(--white);
     }
 
     &-text {

@@ -50,7 +50,7 @@
     flex-direction: column;
     gap: 16px;
     padding: 16px 16px 24px;
-    background: $bg-light;
+    background: var(--bg-light);
     border-radius: 32px;
     @media (min-width: $md) {
       gap: 32px;
@@ -61,7 +61,7 @@
       flex-shrink: 0;
       width: 30px;
       height: 30px;
-      color: $violet;
+      color: var(--violet);
     }
 
     &-body {
@@ -75,7 +75,7 @@
       line-height: 18px;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      color: #717082;
+      color: var(--text-muted);
     }
 
     &-title {
@@ -96,7 +96,7 @@
       margin: 0;
       font-size: 14px;
       line-height: 18px;
-      color: #717082;
+      color: var(--text-muted);
       @media (min-width: $md) {
         font-size: 16px;
         line-height: 20px;
